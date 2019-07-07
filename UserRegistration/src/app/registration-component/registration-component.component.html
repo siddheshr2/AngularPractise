@@ -1,0 +1,52 @@
+<mat-card class="my-card-form">
+        <mat-card-content>
+            <mat-toolbar>
+                <span>Registration</span>
+            </mat-toolbar>
+            <mat-card class="my-card">
+                <mat-card-content>
+                        <form class="my-form" name="rForm" [formGroup]="registrationForm" autocomplete="off" novalidate >
+                                <mat-form-field class="full-width">
+                                    <mat-label>First Name</mat-label>
+                                    <input  matInput  placeholder="First name" formControlName="fname"  id="fname" >
+                                    <mat-hint >Not more then 60 characters long.</mat-hint>
+                                    <mat-error *ngIf="hasError('fname', 'required')">Name is required</mat-error>
+                                    <mat-error *ngIf="hasError('fname', 'maxlength')">You have more than 60 characters</mat-error>                                 
+                                    </mat-form-field>
+                                    <mat-form-field class="full-width">
+                                    <mat-label>Last Name</mat-label>
+                                    <input  matInput  placeholder="Last Name" formControlName="lname"  id="lname"  required>
+                                    </mat-form-field>
+                                    <mat-form-field class="full-width">
+                                    <mat-label>Address</mat-label>
+                                    <input  matInput  placeholder="Address" formControlName="address"  id="address"  required>
+                                    </mat-form-field>
+                                    <mat-form-field class="full-width">
+                                    <mat-label>Email</mat-label>
+                                    <input  matInput  placeholder="Email" formControlName="email"  id="email">
+                                    </mat-form-field>
+                                    <mat-form-field class="full-width">
+                                    <mat-label>Password</mat-label>
+                                    <input  matInput  placeholder="Password"  formControlName="password"  id="password">
+                                    </mat-form-field>
+                                    <section class="example-section">
+                                            <mat-radio-group formControlName="gender"  id="gender" [(ngModel)]="gender">
+                                            <mat-radio-button class="example-margin" value="male">Male</mat-radio-button>
+                                            <mat-radio-button class="example-margin" value="female">Female</mat-radio-button>
+                                            <mat-radio-button class="example-margin" value="other">Other</mat-radio-button>
+                                            </mat-radio-group>
+                                        </section>
+                                    <mat-form-field>
+                                    <mat-label>Date of Birth</mat-label>
+                                        <input matInput [matDatepicker]="picker" placeholder="Choose a date of birth" formControlName="dateOfBirth" id="dateOfBirth" readonly (click)="picker.open()">
+                                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                        <mat-datepicker #picker></mat-datepicker>
+                                    </mat-form-field>
+                            </form>
+                </mat-card-content>
+                <mat-card-actions>
+                        <button mat-raised-button [disabled]="!registrationForm.valid" (click)="registerUser(registrationForm.value)" color="primary">REGISTER</button>
+                </mat-card-actions>
+            </mat-card>
+        </mat-card-content>
+</mat-card>

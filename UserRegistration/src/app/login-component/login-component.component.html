@@ -1,0 +1,30 @@
+<mat-card class="my-card-form">
+    <mat-card-content>
+        <mat-toolbar>
+                <span>LOGIN</span>
+            </mat-toolbar>
+            <mat-card class="my-card">
+                <mat-card-content>
+                    <form class="my-form" name="lForm" [formGroup]="loginForm" autocomplete="off" novalidate>
+                    <mat-form-field class="full-width">
+                        <mat-label>Email</mat-label>
+                        <input  matInput  placeholder="Email" formControlName="email"  id="email">
+                        <mat-hint >Not more then 60 characters long.</mat-hint>
+                        <mat-error *ngIf="hasError('email', 'required')">Name is required</mat-error>
+                        <mat-error *ngIf="hasError('email', 'maxlength')">You have more than 60 characters</mat-error>    
+                    </mat-form-field>
+                    <mat-form-field class="full-width">
+                        <mat-label>Password</mat-label>
+                        <input  matInput  placeholder="Password" formControlName="password"  id="password">
+                        <mat-hint >Not more then 60 characters long.</mat-hint>
+                        <mat-error *ngIf="hasError('password', 'required')">Name is required</mat-error>
+                        <mat-error *ngIf="hasError('password', 'maxlength')">You have more than 60 characters</mat-error>    
+                    </mat-form-field>
+                    </form>
+                </mat-card-content>
+                <mat-card-actions>
+                    <button mat-raised-button [disabled]="!loginForm.valid"  (click)="loginUser(loginForm.value)" color="primary">LOGIN</button>
+                </mat-card-actions>
+            </mat-card>
+        </mat-card-content>
+    </mat-card>            

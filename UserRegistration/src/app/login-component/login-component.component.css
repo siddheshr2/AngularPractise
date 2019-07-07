@@ -1,0 +1,16 @@
+.my-card-form{
+    min-width: 10%;
+    max-width: 50%;
+    width: 30%;
+    margin-left: 30%;
+  }
+
+.my-form{
+    min-width: 30%;
+    max-width: 100%;
+    width: 100%;    
+  }
+   
+  .full-width {
+    width: 100%;
+  }
